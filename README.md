@@ -1,2 +1,2 @@
 # homebrew-celerbuild
-Homebrew Tap for Celerbuild
+Homebrew Tap for CelerBuild
