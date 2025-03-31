@@ -6,10 +6,10 @@ class Celerbuild < Formula
   on_macos do
     if Hardware::CPU.arm?
       url "https://raw.githubusercontent.com/celerbuild/download/refs/heads/main/celerbuild-0.8.8-darwin-arm64.tar.gz"
-      sha256 "a7d7d36f8614b530ba4b6d7e610bfce3945849a0faca8931d064a7827dbc5e86"
+      sha256 "ced9d5cd65659b10c9933050623085083dd96808a0cab6b58a41e9b0aa01ccf2"
     else
       url "https://raw.githubusercontent.com/celerbuild/download/refs/heads/main/celerbuild-0.8.8-darwin-amd64.tar.gz"
-      sha256 "4b919e8f20ed602c3ac3a4aa1d3e409022eb347d3914c1492a0e6e81d0ad9875"
+      sha256 "e2f606cbf9028b3f717f07d2e690ce372200c72bfccecaadfa32d239151359f2"
     end
   end
 
