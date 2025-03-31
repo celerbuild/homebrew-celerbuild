@@ -1,5 +1,5 @@
 class Celerbuild < Formula
-  desc "CelerBuild is a lightweight, self-hosted deployment system for individuals and teams."
+  desc "A lightweight, self-hosted deployment system for individuals and teams"
   homepage "https://celerbuild.com"
   version "0.8.8"
 
@@ -13,13 +13,30 @@ class Celerbuild < Formula
     end
   end
 
-    def install
-      celerbuild_file = Dir["celerbuild-*"].first
-      mv celerbuild_file, "celerbuild"
-      bin.install "celerbuild"
-    end
+  def install
+    celerbuild_file = Dir["celerbuild-*"].first
+    mv celerbuild_file, "celerbuild"
+    bin.install "celerbuild"
+
+    # Creating a configuration Directory
+    (etc/"celerbuild").mkpath
+
+    # Create log directory
+    (var/"log/celerbuild").mkpath
+  end
+
+  service do
+    run [opt_bin/"celerbuild"]
+    keep_alive true
+    working_dir HOMEBREW_PREFIX
+    log_path var/"log/celerbuild/celerbuild.log"
+    error_log_path var/"log/celerbuild/error.log"
+
+    # Setting environment variables
+    environment_variables PATH: std_service_path_env
+  end
 
   test do
-    system "#{bin}/celerbuild", "--version"
+    system "#{bin}/celerbuild", "-version"
   end
 end
